@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
+from width_tela import tamanho_tela
 
 st.set_page_config(layout="wide")
+
+tela = tamanho_tela()
 
 @st.cache_data
 def read_html_manual(file_content: bytes):
@@ -24,8 +27,7 @@ with st.sidebar:
 
 with st.container():
     st.header('Dashboard')
-
-    uploaded_file = st.file_uploader("Subir arquivo", type=["htm", "html"])
+    uploaded_file = st.file_uploader(label="Subir arquivo", type=["htm", "html", "pdf"])
     
     if uploaded_file is not None:
         bytes_data = uploaded_file.read()
@@ -54,4 +56,4 @@ with st.container():
         limited_table = filtered_table.head(200)
         
         # Exibe a tabela limitada
-        st.dataframe(limited_table, width=1450, height=600)
+        st.dataframe(limited_table, width=tela, height=600)

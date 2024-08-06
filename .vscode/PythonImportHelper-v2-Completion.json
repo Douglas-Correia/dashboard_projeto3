@@ -1,0 +1,100 @@
+[
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit_javascript",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit_javascript",
+        "description": "streamlit_javascript",
+        "detail": "streamlit_javascript",
+        "documentation": {}
+    },
+    {
+        "label": "formatar_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def formatar_data(data_iso):\n    try:\n        data_obj = datetime.fromisoformat(data_iso.replace(\"Z\", \"+00:00\"))\n        return data_obj.strftime(\"%d/%m/%Y %H:%M:%S\")\n    except ValueError:\n        return data_iso\n# Função para ler e processar tabelas de um arquivo HTML\n@st.cache_data\ndef read_html_manual(file_content: bytes):\n    arquivo_html = pd.read_html(file_content, header=0, skiprows=2)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "read_html_manual",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def read_html_manual(file_content: bytes):\n    arquivo_html = pd.read_html(file_content, header=0, skiprows=2)\n    tabela = arquivo_html[0]\n    return tabela\n# Função para salvar o arquivo no banco (placeholder)\ndef save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "save_arquivo_banco",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\nwith st.sidebar:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "api_url",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "api_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\nwith st.sidebar:\n    st.subheader('Menu')\n    info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n    info_lotes = st.button(\"Consultas em lote\", use_container_width=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "headers",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "headers = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\nwith st.sidebar:\n    st.subheader('Menu')\n    info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n    info_lotes = st.button(\"Consultas em lote\", use_container_width=True)\n    info_cadastrais = st.button(\"Informações cadastrais\", use_container_width=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tamanho_tela",
+        "kind": 2,
+        "importPath": "width_tela",
+        "description": "width_tela",
+        "peekOfCode": "def tamanho_tela():\n    ui_width = st_js.st_javascript(\"window.innerWidth\")\n    return ui_width",
+        "detail": "width_tela",
+        "documentation": {}
+    }
+]

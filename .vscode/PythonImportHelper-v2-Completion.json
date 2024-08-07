@@ -66,7 +66,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\nwith st.sidebar:",
+        "peekOfCode": "def save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\n# with st.sidebar:",
         "detail": "app",
         "documentation": {}
     },
@@ -75,7 +75,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "api_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\nwith st.sidebar:\n    st.subheader('Menu')\n    info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n    info_lotes = st.button(\"Consultas em lote\", use_container_width=True)",
+        "peekOfCode": "api_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\n# with st.sidebar:\n#     st.subheader('Menu')\n#     info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n#     info_lotes = st.button(\"Consultas em lote\", use_container_width=True)",
         "detail": "app",
         "documentation": {}
     },
@@ -84,7 +84,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "headers = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\nwith st.sidebar:\n    st.subheader('Menu')\n    info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n    info_lotes = st.button(\"Consultas em lote\", use_container_width=True)\n    info_cadastrais = st.button(\"Informações cadastrais\", use_container_width=True)",
+        "peekOfCode": "headers = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\n# with st.sidebar:\n#     st.subheader('Menu')\n#     info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n#     info_lotes = st.button(\"Consultas em lote\", use_container_width=True)\n#     info_cadastrais = st.button(\"Informações cadastrais\", use_container_width=True)",
         "detail": "app",
         "documentation": {}
     },

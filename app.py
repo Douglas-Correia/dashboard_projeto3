@@ -33,11 +33,11 @@ headers = {
 }
 
 # MENU SIDEBAR
-with st.sidebar:
-    st.subheader('Menu')
-    info_processuais = st.button("Informações processuais", use_container_width=True)
-    info_lotes = st.button("Consultas em lote", use_container_width=True)
-    info_cadastrais = st.button("Informações cadastrais", use_container_width=True)
+# with st.sidebar:
+#     st.subheader('Menu')
+#     info_processuais = st.button("Informações processuais", use_container_width=True)
+#     info_lotes = st.button("Consultas em lote", use_container_width=True)
+#     info_cadastrais = st.button("Informações cadastrais", use_container_width=True)
 
 # CONTAINER PRINCIPAL
 with st.container():

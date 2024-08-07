@@ -140,8 +140,6 @@ pythonnet==3.0.3
 pytweening==1.2.0
 pytz==2023.3.post1
 pywebview==4.4.1
-pywin32==306
-pywin32-ctypes==0.2.2
 pyzmq==25.1.1
 referencing==0.32.1
 requests==2.31.0

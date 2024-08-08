@@ -35,6 +35,71 @@
         "documentation": {}
     },
     {
+        "label": "extrair_numeros",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "justica_do_trabalho",
+        "importPath": "urls",
+        "description": "urls",
+        "isExtraImport": true,
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_federal",
+        "importPath": "urls",
+        "description": "urls",
+        "isExtraImport": true,
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "tribunais_superiores",
+        "importPath": "urls",
+        "description": "urls",
+        "isExtraImport": true,
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_eleitoral",
+        "importPath": "urls",
+        "description": "urls",
+        "isExtraImport": true,
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_militar",
+        "importPath": "urls",
+        "description": "urls",
+        "isExtraImport": true,
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_estadual",
+        "importPath": "urls",
+        "description": "urls",
+        "isExtraImport": true,
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
         "label": "streamlit_javascript",
         "kind": 6,
         "isExtraImport": true,
@@ -86,6 +151,60 @@
         "description": "app",
         "peekOfCode": "headers = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\n# with st.sidebar:\n#     st.subheader('Menu')\n#     info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n#     info_lotes = st.button(\"Consultas em lote\", use_container_width=True)\n#     info_cadastrais = st.button(\"Informações cadastrais\", use_container_width=True)",
         "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "tribunais_superiores",
+        "kind": 5,
+        "importPath": "urls",
+        "description": "urls",
+        "peekOfCode": "tribunais_superiores = {\n    \"Tribunal Superior do Trabalho\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tst/_search\",\n    \"Tribunal Superior Eleitoral\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tse/_search\",\n    \"Tribunal Superior de Justiça\": \"https://api-publica.datajud.cnj.jus.br/api_publica_stj/_search\",\n    \"Tribunal Superior Militar\": \"https://api-publica.datajud.cnj.jus.br/api_publica_stm/_search\"\n}\njustica_federal = {\n    \"Tribunal Regional Federal da 1ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\",\n    \"Tribunal Regional Federal da 2ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf2/_search\",\n    \"Tribunal Regional Federal da 3ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf3/_search\",",
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_federal",
+        "kind": 5,
+        "importPath": "urls",
+        "description": "urls",
+        "peekOfCode": "justica_federal = {\n    \"Tribunal Regional Federal da 1ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\",\n    \"Tribunal Regional Federal da 2ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf2/_search\",\n    \"Tribunal Regional Federal da 3ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf3/_search\",\n    \"Tribunal Regional Federal da 4ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf4/_search\",\n    \"Tribunal Regional Federal da 5ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf5/_search\",\n    \"Tribunal Regional Federal da 6ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trf6/_search\"\n}\njustica_estadual = {\n    \"Tribunal de Justiça do Acre\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjac/_search\",",
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_estadual",
+        "kind": 5,
+        "importPath": "urls",
+        "description": "urls",
+        "peekOfCode": "justica_estadual = {\n    \"Tribunal de Justiça do Acre\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjac/_search\",\n    \"Tribunal de Justiça de Alagoas\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjal/_search\",\n    \"Tribunal de Justiça do Amazonas\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjam/_search\",\n    \"Tribunal de Justiça do Amapá\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjap/_search\",\n    \"Tribunal de Justiça da Bahia\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjba/_search\",\n    \"Tribunal de Justiça do Ceará\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjce/_search\",\n    \"Tribunal de Justiça do Distrito Federal e Territórios\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjdft/_search\",\n    \"Tribunal de Justiça do Espírito Santo\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjes/_search\",\n    \"Tribunal de Justiça do Goiás\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjgo/_search\",",
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_do_trabalho",
+        "kind": 5,
+        "importPath": "urls",
+        "description": "urls",
+        "peekOfCode": "justica_do_trabalho = {\n        \"Tribunal Regional do Trabalho da 1ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt1/_search\",\n        \"Tribunal Regional do Trabalho da 2ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt2/_search\",\n        \"Tribunal Regional do Trabalho da 3ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt3/_search\",\n        \"Tribunal Regional do Trabalho da 4ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt4/_search\",\n        \"Tribunal Regional do Trabalho da 5ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt5/_search\",\n        \"Tribunal Regional do Trabalho da 6ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt6/_search\",\n        \"Tribunal Regional do Trabalho da 7ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt7/_search\",\n        \"Tribunal Regional do Trabalho da 8ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt8/_search\",\n        \"Tribunal Regional do Trabalho da 9ª Região\": \"https://api-publica.datajud.cnj.jus.br/api_publica_trt9/_search\",",
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "justica_militar",
+        "kind": 5,
+        "importPath": "urls",
+        "description": "urls",
+        "peekOfCode": "justica_militar = {\n        \"Superior Tribunal Militar\": \"https://api-publica.datajud.cnj.jus.br/api_publica_stm/_search\",\n        \"Tribunal Justiça Militar de Minas Gerais\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjmmg/_search\",\n        \"Tribunal Justiça Militar do Rio Grande do Sul\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjmrs/_search\",\n        \"Tribunal Justiça Militar de São Paulo\": \"https://api-publica.datajud.cnj.jus.br/api_publica_tjmsp/_search\",\n}",
+        "detail": "urls",
+        "documentation": {}
+    },
+    {
+        "label": "extrair_numeros",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def extrair_numeros(numero_processo):\n    return re.sub(r'\\D', '', numero_processo)",
+        "detail": "utils",
         "documentation": {}
     },
     {

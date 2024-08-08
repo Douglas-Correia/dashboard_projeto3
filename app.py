@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import requests
 from datetime import datetime
+from utils import extrair_numeros
+from urls import justica_do_trabalho, justica_federal, tribunais_superiores, justica_eleitoral, justica_militar, justica_estadual
 
 # Configuração da página
 st.set_page_config(layout="wide")
@@ -43,37 +45,73 @@ headers = {
 with st.container():
     st.header('Dashboard')
 
-    # Upload e exibição de arquivo HTML
-    uploaded_file = st.file_uploader(label="Subir arquivo", type=["htm", "html", "pdf"])
+    # Nome do arquivo HTML a ser carregado
+    file_path = "precatórios_federais_alimentares_orçamento_2025.htm"
     
-    if uploaded_file is not None:
-        bytes_data = uploaded_file.read()
+    # Ler o arquivo HTML
+    with open(file_path, 'r', encoding='utf-8') as file:
+        bytes_data = file.read()
+    
+    # Verificar se as tabelas já estão no estado da sessão
+    if 'tables' not in st.session_state:
+        st.session_state.tables = read_html_manual(bytes_data)
+    
+    tables = st.session_state.tables
+    
+    # Opções de filtro
+    options_filter = st.selectbox(
+        "Selecione um filtro de preferência",
+        ["TODOS", "IDOSO", "NÃO", "PESSOA COM DEFICIÊNCIA", "IDOSO, PESSOA COM DEFICIÊNCIA", "DOENÇA GRAVE"]
+    )
+    
+    # Filtrar a tabela com base na opção selecionada
+    if options_filter != "TODOS":
+        filtered_table = tables[tables['PREFERÊNCIA*'] == options_filter]
+    else:
+        filtered_table = tables
+    
+    # Limitar a tabela a 200 linhas
+    limited_table = filtered_table.head(200)
+    
+    # Exibir a tabela no Streamlit
+    st.dataframe(limited_table, width=1000, height=600)
         
-        if 'tables' not in st.session_state:
-            st.session_state.tables = read_html_manual(bytes_data)
-        
-        tables = st.session_state.tables
+    # Seletor de tipo de tribunal
+    tipo_tribunal = st.selectbox(
+        "Selecione o tipo de tribunal",
+        ["Tribunais Superiores", "Justiça Federal", "Justiça Estadual", "Justiça do Trabalho", "Justiça Eleitoral", "Justiça Militar"]
+    )
 
-        options_filter = st.selectbox(
-            "Selecione um filtro de preferência",
-            ["TODOS", "IDOSO", "NÃO", "PESSOA COM DEFICIÊNCIA", "IDOSO, PESSOA COM DEFICIÊNCIA", "DOENÇA GRAVE"]
-        )
-        
-        if options_filter != "TODOS":
-            filtered_table = tables[tables['PREFERÊNCIA*'] == options_filter]
-        else:
-            filtered_table = tables
-        
-        limited_table = filtered_table.head(200)
-        
-        st.dataframe(limited_table, width=1000, height=600)
-        
+    # Seletor de tribunal específico com base no tipo escolhido
+    if tipo_tribunal == "Tribunais Superiores":
+        tribunal_escolhido = st.selectbox("Selecione o tribunal", list(tribunais_superiores.keys()))
+        api_url = tribunais_superiores[tribunal_escolhido]
+    elif tipo_tribunal == "Justiça Federal":
+        tribunal_escolhido = st.selectbox("Selecione o tribunal", list(justica_federal.keys()))
+        api_url = justica_federal[tribunal_escolhido]
+    elif tipo_tribunal == "Justiça do Trabalho":
+        tribunal_escolhido = st.selectbox("Selecione o tribunal", list(justica_do_trabalho.keys()))
+        api_url = justica_do_trabalho[tribunal_escolhido]
+    elif tipo_tribunal == "Justiça Estadual":
+        tribunal_escolhido = st.selectbox("Selecione o tribunal", list(justica_estadual.keys()))
+        api_url = justica_estadual[tribunal_escolhido]
+    elif tipo_tribunal == "Justiça Eleitoral":
+        tribunal_escolhido = st.selectbox("Selecione o tribunal", list(justica_eleitoral.keys()))
+        api_url = justica_eleitoral[tribunal_escolhido]
+    elif tipo_tribunal == "Justiça Militar":
+        tribunal_escolhido = st.selectbox("Selecione o tribunal", list(justica_militar.keys()))
+        api_url = justica_militar[tribunal_escolhido]
+    else:
+        tribunal_escolhido = st.selectbox("Selecione o tribunal", list(justica_estadual.keys()))
+        api_url = justica_estadual[tribunal_escolhido]
+
     # Campo de busca para o número do processo
     numero_processo = st.text_input("Digite o número do processo")
 
     if st.button("Buscar processo"):
         # Verifica se o número do processo foi fornecido
         if numero_processo:
+            numero_processo = extrair_numeros(numero_processo)
             # Corpo da solicitação para a API
             payload = {
                 "query": {
@@ -85,15 +123,15 @@ with st.container():
 
             # Realiza a requisição POST para a API
             response = requests.post(api_url, headers=headers, json=payload)
-            
+
             # Verifica se a requisição foi bem-sucedida
             if response.status_code == 200:
                 data = response.json()
                 hits = data.get("hits", {}).get("hits", [])
-                
+
                 if hits:
                     processo = hits[0]["_source"]
-                    
+
                     st.subheader(f"Processo: {processo['numeroProcesso']}")
                     st.write(f"Classe: {processo['classe']['nome']}")
                     st.write(f"Sistema: {processo['sistema']['nome']}")
@@ -101,7 +139,7 @@ with st.container():
                     st.write(f"Tribunal: {processo['tribunal']}")
                     st.write(f"Data da última atualização: {formatar_data(processo['dataHoraUltimaAtualizacao'])}")
                     st.write(f"Grau: {processo['grau']}")
-                    
+
                     st.subheader("Movimentos")
                     for movimento in processo.get("movimentos", []):
                         st.write(f"{formatar_data(movimento['dataHora'])}: {movimento['nome']}")
@@ -111,3 +149,4 @@ with st.container():
                 st.error(f"Erro na requisição: {response.status_code}")
         else:
             st.warning("Por favor, insira um número de processo válido.")
+  

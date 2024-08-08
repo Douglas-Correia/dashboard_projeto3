@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 from datetime import datetime
+from io import StringIO
 from utils import extrair_numeros
 from urls import justica_do_trabalho, justica_federal, tribunais_superiores, justica_eleitoral, justica_militar, justica_estadual
 
@@ -18,8 +19,9 @@ def formatar_data(data_iso):
 
 # Função para ler e processar tabelas de um arquivo HTML
 @st.cache_data
-def read_html_manual(file_content: bytes):
-    arquivo_html = pd.read_html(file_content, header=0, skiprows=2)
+def read_html_manual(file_content: str):
+    # Use StringIO para tratar a string como um arquivo
+    arquivo_html = pd.read_html(StringIO(file_content), header=0, skiprows=2)
     tabela = arquivo_html[0]
     return tabela
 
@@ -34,13 +36,6 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# MENU SIDEBAR
-# with st.sidebar:
-#     st.subheader('Menu')
-#     info_processuais = st.button("Informações processuais", use_container_width=True)
-#     info_lotes = st.button("Consultas em lote", use_container_width=True)
-#     info_cadastrais = st.button("Informações cadastrais", use_container_width=True)
-
 # CONTAINER PRINCIPAL
 with st.container():
     st.header('Dashboard')
@@ -50,11 +45,11 @@ with st.container():
     
     # Ler o arquivo HTML
     with open(file_path, 'r', encoding='utf-8') as file:
-        bytes_data = file.read()
+        file_content = file.read()
     
     # Verificar se as tabelas já estão no estado da sessão
     if 'tables' not in st.session_state:
-        st.session_state.tables = read_html_manual(bytes_data)
+        st.session_state.tables = read_html_manual(file_content)
     
     tables = st.session_state.tables
     
@@ -149,4 +144,3 @@ with st.container():
                 st.error(f"Erro na requisição: {response.status_code}")
         else:
             st.warning("Por favor, insira um número de processo válido.")
-  

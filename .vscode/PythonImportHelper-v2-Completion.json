@@ -35,6 +35,14 @@
         "documentation": {}
     },
     {
+        "label": "StringIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
         "label": "extrair_numeros",
         "importPath": "utils",
         "description": "utils",
@@ -113,7 +121,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def formatar_data(data_iso):\n    try:\n        data_obj = datetime.fromisoformat(data_iso.replace(\"Z\", \"+00:00\"))\n        return data_obj.strftime(\"%d/%m/%Y %H:%M:%S\")\n    except ValueError:\n        return data_iso\n# Função para ler e processar tabelas de um arquivo HTML\n@st.cache_data\ndef read_html_manual(file_content: bytes):\n    arquivo_html = pd.read_html(file_content, header=0, skiprows=2)",
+        "peekOfCode": "def formatar_data(data_iso):\n    try:\n        data_obj = datetime.fromisoformat(data_iso.replace(\"Z\", \"+00:00\"))\n        return data_obj.strftime(\"%d/%m/%Y %H:%M:%S\")\n    except ValueError:\n        return data_iso\n# Função para ler e processar tabelas de um arquivo HTML\n@st.cache_data\ndef read_html_manual(file_content: str):\n    # Use StringIO para tratar a string como um arquivo",
         "detail": "app",
         "documentation": {}
     },
@@ -122,7 +130,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def read_html_manual(file_content: bytes):\n    arquivo_html = pd.read_html(file_content, header=0, skiprows=2)\n    tabela = arquivo_html[0]\n    return tabela\n# Função para salvar o arquivo no banco (placeholder)\ndef save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {",
+        "peekOfCode": "def read_html_manual(file_content: str):\n    # Use StringIO para tratar a string como um arquivo\n    arquivo_html = pd.read_html(StringIO(file_content), header=0, skiprows=2)\n    tabela = arquivo_html[0]\n    return tabela\n# Função para salvar o arquivo no banco (placeholder)\ndef save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"",
         "detail": "app",
         "documentation": {}
     },
@@ -131,7 +139,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\n# with st.sidebar:",
+        "peekOfCode": "def save_arquivo_banco(file: bytes):\n    arquivo = file\n# URL da API e cabeçalho de autorização\napi_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# CONTAINER PRINCIPAL\nwith st.container():",
         "detail": "app",
         "documentation": {}
     },
@@ -140,7 +148,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "api_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\n# with st.sidebar:\n#     st.subheader('Menu')\n#     info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n#     info_lotes = st.button(\"Consultas em lote\", use_container_width=True)",
+        "peekOfCode": "api_url = \"https://api-publica.datajud.cnj.jus.br/api_publica_trf1/_search\"\nheaders = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# CONTAINER PRINCIPAL\nwith st.container():\n    st.header('Dashboard')\n    # Nome do arquivo HTML a ser carregado\n    file_path = \"precatórios_federais_alimentares_orçamento_2025.htm\"",
         "detail": "app",
         "documentation": {}
     },
@@ -149,7 +157,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "headers = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# MENU SIDEBAR\n# with st.sidebar:\n#     st.subheader('Menu')\n#     info_processuais = st.button(\"Informações processuais\", use_container_width=True)\n#     info_lotes = st.button(\"Consultas em lote\", use_container_width=True)\n#     info_cadastrais = st.button(\"Informações cadastrais\", use_container_width=True)",
+        "peekOfCode": "headers = {\n    \"Authorization\": \"APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==\",\n    \"Content-Type\": \"application/json\"\n}\n# CONTAINER PRINCIPAL\nwith st.container():\n    st.header('Dashboard')\n    # Nome do arquivo HTML a ser carregado\n    file_path = \"precatórios_federais_alimentares_orçamento_2025.htm\"\n    # Ler o arquivo HTML",
         "detail": "app",
         "documentation": {}
     },
